@@ -80,7 +80,16 @@ class EmployeeWage{
         echo "Total Working Hours:: " . $this->totalWorkingHours . "\n";
         echo "Monthly Wage:: " . $this->monthlyWage . "\n\n";
     }
+    function addCompany()
+    {
+        $name = readline('Enter Name of Company: ');
+        echo "Employee Wage Computation For\n";
+        $WORKING_DAYS_PER_MONTH = readline('Enter Max Working Days Per Month: ');
+        $WORKING_HOURS_PER_MONTH = readline('Enter Max Working Hours Per Month: ');
+        $WAGE_PER_HR = readline('Enter Employee Wage Per Hour: ');
+        $this->monthlyWage($WORKING_DAYS_PER_MONTH, $WORKING_HOURS_PER_MONTH, $WAGE_PER_HR);
+    }
 }
-$employeeWage = new EmployeeWage();
-$employeeWage->monthlyWage();
+$company = new EmployeeWage();
+$company->addCompany();
 ?>
