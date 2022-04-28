@@ -11,7 +11,6 @@ class EmployeeWage{
     public $IS_ABSENT = 0;
     public $WORKING_DAYS_PER_MONTH = 20;
     public $WORKING_HOURS_PER_MONTH = 100;
-
     public $workingHrs = 0;
     public $monthlyWage = 0;
     public $totalWorkingDays = 0;
@@ -51,10 +50,9 @@ class EmployeeWage{
      */
     function dailyWage()
     {
-        $hrs = $this->attendance();
-        $this->workingHrs = $hrs;
-        $dailyWage = $this->WAGE_PER_HR * $hrs;
-        echo "Working Hours:: " . $hrs . "\n";
+        $this->workingHrs = $this->attendance();
+        $dailyWage = $this->WAGE_PER_HR * $this->workingHrs;
+        echo "Working Hours:: " . $this->workingHrs . "\n";
         echo "Daily Wage:: " . $dailyWage . "\n\n";
         return $dailyWage;
     }
