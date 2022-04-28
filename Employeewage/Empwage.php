@@ -95,9 +95,15 @@ class EmployeeWage{
     {
         $name = readline('Enter Name of Company: ');
         echo "Employee Wage Computation For\n";
+        echo "***** " . $name . " *****\n";
         $this->monthlyWage();
     }
 }
 $company1 = new EmployeeWage(20, 20, 100);
-$company1->addCompany();
+$company2 = new EmployeeWage(25, 25, 125);
+$company3 = new EmployeeWage(30, 30, 150);
+$empWageArray = array($company1, $company2, $company3);
+foreach ($empWageArray as $company) {
+    $company->addCompany();
+}
 ?>
