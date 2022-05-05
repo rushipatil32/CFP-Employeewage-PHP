@@ -18,11 +18,10 @@ class CompanyList
             $hours = readline("Enter maximum working hours per month : ");
             echo "Employee Wage Computation For $name[$i] \n";
             $employeeWage = new EmployeeWage($name, $wage, $days, $hours);
-            $totalWage[$i] = $employeeWage->monthlyWage();
-        }
-        for ($i = 0; $i < $n; $i++) {
-            echo "\nName of Company : " . $name[$i];
-            echo "\nTotal Salary : " . $totalWage[$i];
+            $employeeWage->monthlyWage();
+            if($i == ($n -1)){
+             $employeeWage->getTotalWage(); 
+            }
         }
     }
 }

@@ -120,7 +120,23 @@ class EmployeeWage implements CalculateEmpWage
         }
         echo "/n";
     }
+/**
+     * Function to get total wage by company name
+     * Non-parameterized function
+     * No return values
+     */
+    function getTotalWage()
+    {
+        $companyName = readline('Enter Company Name to Search: ');
+        foreach ($this->totalWageArray as $key => $values) {
+            if ($key == $companyName) {
+                echo "\nCompany Found.\n";
+                echo $companyName . " Company total wage is: " . $values;
+            }
+        }
+    }
 }
+
 //Creating object of CompanyList and calling the method
 $multipleCompany = new CompanyList();
 $multipleCompany->multipleCompanies();
