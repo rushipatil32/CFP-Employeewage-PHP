@@ -1,6 +1,7 @@
 <<?php
 
 include "EmpInterface.php";
+include "CompanyList.php";
 
 //function to display Welcome message
 function welcome(){
@@ -24,7 +25,7 @@ class EmployeeWage implements CalculateEmpWage{
     public $WORKING_DAYS_PER_MONTH;
     public $WORKING_HOURS_PER_MONTH;
 
-    public $CompName;
+    public $COMPANY_NAME;
     public $workingHrs = 0;
     public $monthlyWage = 0;
     public $totalWorkingDays = 0;
@@ -34,9 +35,9 @@ class EmployeeWage implements CalculateEmpWage{
      * Parameterized contructor Function
      * Parameters are - $wage- wage per hr, $days-working days per month, $hours-working hrs per month
      */
-    public function __construct($CompName,$wage, $days, $hours)
+    public function __construct($companyName,$wage, $days, $hours)
     {
-        $this->COMP_NAME = $CompName;
+        $this->COMPANY_NAME = $companyName;
         $this->WAGE_PER_HR = $wage;
         $this->WORKING_DAYS_PER_MONTH = $days;
         $this->WORKING_HOURS_PER_MONTH = $hours;
@@ -91,7 +92,7 @@ class EmployeeWage implements CalculateEmpWage{
             $this->totalWorkingHours < $this->WORKING_HOURS_PER_MONTH &&
             $this->totalWorkingDays < $this->WORKING_DAYS_PER_MONTH
         ) {
-            echo "Company Name : ".$this->COMP_NAME . "\n";
+            echo "Company Name : " . $this->COMPANY_NAME . "\n";
             $this->totalWorkingDays++;
             echo "Day : " . $this->totalWorkingDays . "\n";
             $dailyWage = $this->dailyWage($this->WAGE_PER_HR);
@@ -103,24 +104,10 @@ class EmployeeWage implements CalculateEmpWage{
         echo "Total Working Hours : " . $this->totalWorkingHours . "\n";
         echo "Monthly Wage : " . $this->monthlyWage . "\n\n";
     }
-
-
-    /**
-     * Function for Taking User Input for company
-     */
-    function addCompany()
-    {
-      //  $companyName = readline('Enter Name of Company : ');
-        //echo "Employee Wage Computation For $companyName \n";
-        $this->monthlyWage();
-    }
 }
 
-//Creating object of EmployeeWage class passing the arguments wagePerHrs, workingDaysPerMonth, workingHrsPerMonth
-$company1 = new EmployeeWage("Rushi",25, 20, 100);
-$company2 = new EmployeeWage("Rahul",25, 24, 80);
-$empWageArray = array($company1, $company2);
-foreach ($empWageArray as $company) {
-    $company->addCompany();
-}
+
+    //Creating object of CompanyList and calling the method
+$multipleCompany = new CompanyList();
+$multipleCompany->multipleCompanies();
 ?>
